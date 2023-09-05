@@ -36,23 +36,18 @@ exports.postRating = (req, res, next) => {
         }
     })
     .catch(error => {
-        res.status(404).json({ message: 'Livre introuvable', error })
+        res.status(404).json({ error })
     });
 };
-
+        
 exports.getBestRating = (req, res, next) => {
-    let bestRatingBooks = [];
     Book.find()
     .then(books => {
-        for (let i=0; i < books.length; i++) {
-            const book = books[i];
-            bestRatingBooks.push(book);
-        }
-        bestRatingBooks.sort((a, b) => {
+        books.sort((a, b) => {
             return b.averageRating - a.averageRating;
         });
-        bestRatingBooks.splice(3, bestRatingBooks.length -3);
-        res.status(201).json(bestRatingBooks);
+        books.splice(3, books.length -3);
+        res.status(201).json(books);
     })
     .catch(error => {res.status(404).json({ error })});
 };
