@@ -1,0 +1,10 @@
+# Structure
+# <Key> = <value>
+
+# Database
+DB_USER = <MongoDB User>
+DB_PASSWORD = <Database password>
+DB_LINK = <Link to the database>
+
+# JWT (token)
+RANDOM_TOKEN_SECRET = <Random string to generate token>
